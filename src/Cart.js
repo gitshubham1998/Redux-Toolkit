@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
@@ -13,11 +20,17 @@ const Cart = () => {
   };
 
   return (
-    <View style={{justifyContent: 'center', alignItems: 'center'}}>
-      <Text style={styles.cartText}>{cartData.length} Item In Your Cart </Text>
-      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+    <View>
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <Text style={styles.cartText}>
+          {cartData.length} Item In Your Cart{' '}
+        </Text>
+      </View>
+
+      <ScrollView
+        contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}>
         {cartData?.map(item => (
-          <View key={item.id} style={[styles.card, styles.shadowProp]}>
+          <View style={[styles.card, styles.shadowProp]}>
             <Image style={styles.image} source={{uri: item.image}} />
             <Text style={styles.headText} numberOfLines={1}>
               {item.title}
@@ -34,7 +47,7 @@ const Cart = () => {
             </TouchableOpacity>
           </View>
         ))}
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -62,12 +75,15 @@ const styles = StyleSheet.create({
     width: '40%',
     marginLeft: 20,
     margin: 5,
+    marginBottom: 20,
   },
+
   shadowProp: {
     shadowColor: '#171717',
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.2,
     shadowRadius: 3,
+    marginTop: 40,
   },
   image: {
     width: '100%',

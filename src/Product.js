@@ -24,11 +24,11 @@ const Product = () => {
   }, []);
 
   const addToBag = products => {
-      dispatch(add(products));
+    dispatch(add(products));
   };
 
   return (
-    <View>
+    <>
       <View style={styles.headCont}>
         <Text style={styles.headText}>Products</Text>
         <TouchableOpacity
@@ -60,7 +60,7 @@ const Product = () => {
           ))}
         </View>
       </ScrollView>
-    </View>
+    </>
   );
 };
 
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     width: '40%',
     marginLeft: 20,
     margin: 5,
+    marginBottom: 20,
   },
   shadowProp: {
     shadowColor: '#171717',
